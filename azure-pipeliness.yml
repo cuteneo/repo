@@ -1,0 +1,13 @@
+trigger:
+- main  # Trigger the pipeline when changes are pushed to the main branch
+
+pool:
+  name: 'pool'  # Use the name of your agent pool
+
+jobs:
+- job: RunDateCommands
+  steps:
+  - script: |
+      .\run_date_commands.cmd  # Call the batch script
+    displayName: 'Run Date and Time Commands'
+    workingDirectory: $(Build.SourcesDirectory)  # Ensure the script is run from the repo's root directory
